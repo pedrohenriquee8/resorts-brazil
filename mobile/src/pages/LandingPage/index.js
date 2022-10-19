@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import { THEME } from "../../theme";
-import Background from "../Background";
+import Background from "../../components/Background";
 
 export default function LandingPage() {
     const image = require('../../assets/landingpage.png');
