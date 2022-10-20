@@ -1,17 +1,17 @@
-import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import { THEME } from "../../theme";
 import Background from "../../components/Background";
+import Poster from "../../components/Poster";
 
 export default function LandingPage() {
-    const image = require('../../assets/landingpage.png');
+    const image = require('../../assets/background-landingpage.png');
     const Navigation = useNavigation();
 
     const handleNavigateToLogin = () => {
-        Navigation.navigate('Login');
+        Navigation.navigate("Login");
     }
 
     return (
@@ -19,32 +19,25 @@ export default function LandingPage() {
             <Background
                 image={image}
                 resizeMode="cover"
-                height="100%"
-                width="100%"
-            >
-                <View style={styles.content}>
-                    <LinearGradient
-                        colors={[THEME.COLORS.LINEAR_GRADIENT.START, THEME.COLORS.LINEAR_GRADIENT.END]}
-                        style={styles.linearGradient}
-                        start={[1.8, 2]}
-                        end={[0, 0]}
-                    >
-                        <Text style={styles.title}>Conheça os melhores resorts!</Text>
-                        <Text style={styles.subTitle}>Explore e encontre os paraísos à beira-mar.</Text>
+                style={styles.background}
+            />
+            <View style={styles.content}>
+                <Poster style={styles.poster}>
+                    <Text style={styles.title}>Conheça os melhores resorts!</Text>
+                    <Text style={styles.subTitle}>Explore e encontre os paraísos à beira-mar.</Text>
 
-                        <TouchableOpacity
-                            style={styles.button}
-                            onPress={handleNavigateToLogin}
-                        >
-                            <Ionicons
-                                name="airplane-outline"
-                                size={28}
-                                style={styles.buttonIcon}
-                            />
-                        </TouchableOpacity>
-                    </LinearGradient>
-                </View>
-            </Background>
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={handleNavigateToLogin}
+                    >
+                        <Ionicons
+                            name="airplane-outline"
+                            size={28}
+                            style={styles.buttonIcon}
+                        />
+                    </TouchableOpacity>
+                </Poster>
+            </View>
         </SafeAreaView>
     )
 }
@@ -52,22 +45,30 @@ export default function LandingPage() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        position: "relative",
+    },
+    background: {
+        flex: 1,
+        height: "100%",
+        width: "100%",
     },
     content: {
+        position: "absolute",
+        bottom: 48,
         height: 200,
-        width: 380,
-        right: 2,
-        marginTop: 550,
-        marginBottom: 32,
+        width: "100%",
     },
-    linearGradient: {
+    poster: {
         flex: 1,
         flexDirection: "column",
-        alignItems: "center",
         justifyContent: "center",
+        alignItems: "center",
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
         borderBottomRightRadius: 30,
+        borderWidth: 1,
+        borderStyle: "solid",
+        borderColor: THEME.COLORS.BORDER,
     },
     title: {
         fontFamily: THEME.FONT_FAMILY.POPPINS_700BOLD,
