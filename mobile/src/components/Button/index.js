@@ -1,12 +1,16 @@
-import { Text, TouchableOpacity } from "react-native";
+import { Button as ButtonNativeBase, Text } from "native-base";
 
-export default function Button({ styleButton, text, styleText, onPress }) {
+export default function Button({ textStyle, text, ...rest }) {
     return (
-        <TouchableOpacity
-            style={styleButton}
-            onPress={onPress}
+        <ButtonNativeBase
+            w="full"
+            p={4}
+            _pressed={{
+                opacity: 0.7,
+            }}
+            {...rest}
         >
-            <Text style={styleText}>{text}</Text>
-        </TouchableOpacity>
-    )
+            <Text style={textStyle}>{text}</Text>
+        </ButtonNativeBase>
+    );
 }

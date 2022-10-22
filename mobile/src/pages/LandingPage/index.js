@@ -17,7 +17,7 @@ export default function LandingPage() {
     return (
         <SafeAreaView style={styles.container}>
             <Background
-                image={image}
+                source={image}
                 resizeMode="cover"
                 style={styles.background}
             />
@@ -39,7 +39,7 @@ export default function LandingPage() {
                 </Poster>
             </View>
         </SafeAreaView>
-    )
+    );
 }
 
 const styles = StyleSheet.create({

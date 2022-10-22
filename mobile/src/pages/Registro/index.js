@@ -1,9 +1,9 @@
-import { View } from "react-native";
+import { SafeAreaView } from "react-native";
 
 export default function Registro() {
     return (
-        <View>
+        <SafeAreaView>
 
-        </View>
+        </SafeAreaView>
     )
 }

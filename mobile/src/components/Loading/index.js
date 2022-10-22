@@ -13,7 +13,7 @@ export default function Loading() {
                 />
             </Poster>
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({

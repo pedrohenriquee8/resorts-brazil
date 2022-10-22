@@ -1,11 +1,9 @@
 import { ImageBackground } from "react-native";
 
-export default function Background({ image, resizeMode, style }) {
+export default function Background({ ...rest }) {
     return (
         <ImageBackground
-            source={image}
-            resizeMode={resizeMode}
-            style={style}
+            {...rest}
         />
-    )
+    );
 }

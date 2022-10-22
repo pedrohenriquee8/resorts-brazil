@@ -12,5 +12,5 @@ export default function Poster({ children, style }) {
         >
             {children}
         </LinearGradient>
-    )
+    );
 }
