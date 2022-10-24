@@ -1,17 +1,18 @@
 import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Ionicons from '@expo/vector-icons/Ionicons';
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { THEME } from "../../theme";
 import Background from "../../components/Background";
 import Poster from "../../components/Poster";
+import Heading from "../../components/Heading";
 
 export default function LandingPage() {
     const image = require('../../assets/background-landingpage.png');
-    const Navigation = useNavigation();
+    const navigation = useNavigation();
 
     const handleNavigateToLogin = () => {
-        Navigation.navigate("Login");
+        navigation.navigate("Login");
     }
 
     return (
@@ -23,8 +24,10 @@ export default function LandingPage() {
             />
             <View style={styles.content}>
                 <Poster style={styles.poster}>
-                    <Text style={styles.title}>Conheça os melhores resorts!</Text>
-                    <Text style={styles.subTitle}>Explore e encontre os paraísos à beira-mar.</Text>
+                    <Heading
+                        title="Conheça os melhores resorts!"
+                        subtitle="Explore e encontre os paraísos à beira-mar."
+                    />
 
                     <TouchableOpacity
                         style={styles.button}
@@ -69,16 +72,6 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderStyle: "solid",
         borderColor: THEME.COLORS.BORDER,
-    },
-    title: {
-        fontFamily: THEME.FONT_FAMILY.POPPINS_700BOLD,
-        fontSize: THEME.FONT_SIZE.LG,
-        color: THEME.COLORS.TEXT.BLACK,
-    },
-    subTitle: {
-        fontFamily: THEME.FONT_FAMILY.POPPINS_600SEMIBOLD,
-        fontSize: THEME.FONT_SIZE.MD,
-        color: THEME.COLORS.TEXT.GRAY,
     },
     button: {
         marginTop: 18,

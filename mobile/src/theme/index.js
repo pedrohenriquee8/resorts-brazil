@@ -1,6 +1,9 @@
 export const THEME = {
     COLORS: {
-        ACTIVY_INDICATOR: '#964B00',
+        ACTIVY_INDICATOR: {
+            BROWN: '#964B00',
+            WHITE: '#FFFFFF',
+        },
         LINEAR_GRADIENT: {
             START: '#FFE4E1',
             END: '#FAF0E6',

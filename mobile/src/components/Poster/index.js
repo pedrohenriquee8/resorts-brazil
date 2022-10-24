@@ -1,5 +1,5 @@
 import { LinearGradient } from "expo-linear-gradient";
-import { StyleSheet } from "react-native";
+
 import { THEME } from "../../theme";
 
 export default function Poster({ children, style }) {

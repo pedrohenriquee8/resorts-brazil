@@ -8,7 +8,7 @@ export default function Loading() {
         <View style={styles.container}>
             <Poster style={styles.poster}>
                 <ActivityIndicator
-                    color={THEME.COLORS.ACTIVY_INDICATOR}
+                    color={THEME.COLORS.ACTIVY_INDICATOR.BROWN}
                     size={40}
                 />
             </Poster>
