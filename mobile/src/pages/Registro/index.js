@@ -20,7 +20,6 @@ export default function Registro() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [modalVisible, setModalVisible] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
     const schema = yup.object({
@@ -37,9 +36,9 @@ export default function Registro() {
         setName(data.name);
         setEmail(data.email);
         setPassword(data.password);
-        setModalVisible(true);
-        navigation.navigate("Login");
+        handleGoBack();
     }
+
 
     const handleShowPassword = () => {
         setShowPassword(!showPassword);
@@ -54,7 +53,6 @@ export default function Registro() {
             <Background
                 source={image}
                 resizeMode="cover"
-                blurRadius={modalVisible ? 10 : 0}
                 style={{ height: "100%", width: "100%" }}
             />
             <View style={styles.content}>
@@ -153,7 +151,7 @@ const styles = StyleSheet.create({
     },
     content: {
         position: "absolute",
-        height: 500,
+        height: 485,
         width: "100%",
     },
     poster: {

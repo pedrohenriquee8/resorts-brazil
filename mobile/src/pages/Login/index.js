@@ -13,9 +13,12 @@ import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Heading from "../../components/Heading";
 
+import { useAuth } from "../../contexts/auth";
+
 export default function Login() {
     const image = require('../../assets/background-login.png');
     const navigation = useNavigation();
+    const { signIn } = useAuth();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -30,9 +33,10 @@ export default function Login() {
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = async (data) => {
+    const onSubmit = (data) => {
         setEmail(data.email);
         setPassword(data.password);
+        signIn(email, password);
     };
 
     const handleShowPassword = () => {
@@ -152,7 +156,7 @@ const styles = StyleSheet.create({
     },
     buttons: {
         flexDirection: "row",
-        marginTop: 18,
+        marginTop: 12,
     },
     buttonRegister: {
         flex: 1,
