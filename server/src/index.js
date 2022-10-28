@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { PrismaClient } from "@prisma/client";
+
 const prisma = new PrismaClient();
 
 const app = express();
@@ -18,8 +19,10 @@ app.post("/register", async (req, res) => {
             }
         });
         console.log(user);
+        return res.status(200).json({ sucess: true });
     } catch (error) {
         console.log(error);
+        return res.status(409).json({ sucess: false });
     }
 })
 
