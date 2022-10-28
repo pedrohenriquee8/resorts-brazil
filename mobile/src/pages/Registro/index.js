@@ -35,14 +35,10 @@ export default function Registro() {
 
     const onSubmit = async (data) => {
         const controllerRegistro = new ControllerRegistro();
-        const status = await controllerRegistro.registerUser(data.name, data.email, data.password);
-
-        setName(data.name);
-        setEmail(data.email);
-        setPassword(data.password);
+        const dataRegister = await controllerRegistro.registerUser(data.name, data.email, data.password);
 
         {
-            status === 200 ?
+            !!dataRegister && dataRegister.sucess === true ?
                 Alert.alert(
                     'Sucesso!',
                     'Conta criada com sucesso!',
@@ -58,6 +54,10 @@ export default function Registro() {
                     ],
                 );
         }
+
+        setName(data.name);
+        setEmail(data.email);
+        setPassword(data.password);
     };
 
     const handleShowPassword = () => {

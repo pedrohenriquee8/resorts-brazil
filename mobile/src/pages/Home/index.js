@@ -1,7 +1,7 @@
 import { SafeAreaView, StyleSheet, Text } from "react-native";
 import Button from "../../components/Button";
 
-import { useAuth } from "../../contexts/auth";
+import { useAuth } from "../../contexts/authContext";
 
 export default function Home() {
     const { signOut, user } = useAuth();
@@ -9,11 +9,11 @@ export default function Home() {
     const handleSignOut = () => {
         signOut();
     }
-    console.log(user)
+
     return (
         <SafeAreaView style={styles.container}>
             <Button onPress={handleSignOut}>
-                <Text>Clique</Text>
+                <Text>Clique {user.name}</Text>
             </Button>
         </SafeAreaView>
     );

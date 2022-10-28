@@ -1,6 +1,6 @@
 import { StatusBar } from "react-native";
 import { useFonts, Poppins_700Bold, Poppins_600SemiBold, Poppins_500Medium } from "@expo-google-fonts/poppins";
-import { AuthProvider } from "./src/contexts/auth";
+import { AuthProvider } from "./src/contexts/authContext";
 
 import Routes from "./src/routes";
 import Loading from "./src/components/Loading";

@@ -1,10 +1,11 @@
-import SendingData from "../../services/registroService";
+import RegistroService from "../../services/registroService";
 
 export default class ControllerRegistro {
     registerUser = async (name, email, password) => {
-        const sendingData = new SendingData();
-        const dataToServer = await sendingData.registerUser(name, email, password);
-        const status = dataToServer.status;
-        return status;
+        const registroService = new RegistroService();
+        const data = await registroService.registerUser(name, email, password);
+        if (!!data) {
+            return data;
+        }
     };
 }

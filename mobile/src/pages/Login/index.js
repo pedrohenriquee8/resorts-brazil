@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigation } from "@react-navigation/native";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -13,7 +13,8 @@ import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Heading from "../../components/Heading";
 
-import { useAuth } from "../../contexts/auth";
+import { useAuth } from "../../contexts/authContext";
+import ControllerLogin from "./controllerLogin";
 
 export default function Login() {
     const image = require('../../assets/background-login.png');
@@ -33,10 +34,30 @@ export default function Login() {
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
+        const controllerLogin = new ControllerLogin();
+        const dataLogin = await controllerLogin.loginUser(data.email, data.password);
+
+        {
+            !!dataLogin && dataLogin.sucess === true ?
+                Alert.alert(
+                    'Sucesso!',
+                    'Conta encontrada!',
+                    [
+                        { text: 'OK', onPress: () => { signIn(dataLogin.user.name, dataLogin.user.email, dataLogin.user.password); } },
+                    ],
+                ) :
+                Alert.alert(
+                    'Erro!',
+                    'Não foi possível encontrar a conta, confira se o e-mail já está cadastrado ou confira se a senha está correta.',
+                    [
+                        { text: 'OK', onPress: () => { } },
+                    ],
+                );
+        }
+
         setEmail(data.email);
         setPassword(data.password);
-        signIn(email, password);
     };
 
     const handleShowPassword = () => {

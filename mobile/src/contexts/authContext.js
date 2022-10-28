@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect, useContext } from "react";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import * as auth from "../services/auth";
+import * as auth from "../services/authService";
 
 const AuthContext = createContext({});
 
@@ -23,8 +23,9 @@ export const AuthProvider = ({ children }) => {
         loadStorageData();
     }, []);
 
-    const signIn = async (email, password) => {
+    const signIn = async (name, email, password) => {
         const response = await auth.Auth();
+        response["user"]["name"] = name;
         response["user"]["email"] = email;
         response["user"]["password"] = password;
         setUser(response.user);
@@ -47,6 +48,5 @@ export const AuthProvider = ({ children }) => {
 
 export function useAuth() {
     const context = useContext(AuthContext);
-
     return context;
 };
