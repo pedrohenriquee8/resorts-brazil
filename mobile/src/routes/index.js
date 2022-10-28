@@ -10,7 +10,7 @@ import Loading from "../components/Loading";
 export default function Routes() {
     const { signed, isLoading } = useAuth();
 
-    if (isLoading) {
+    if (signed && isLoading) {
         return (
             <Loading />
         );

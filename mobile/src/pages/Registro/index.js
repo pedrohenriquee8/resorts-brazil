@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigation } from "@react-navigation/native";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -12,6 +12,7 @@ import Poster from "../../components/Poster";
 import Heading from "../../components/Heading";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import ControllerRegistro from "./controllerRegistro";
 
 export default function Registro() {
     const image = require('../../assets/background-register.png');
@@ -32,13 +33,32 @@ export default function Registro() {
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
+        const controllerRegistro = new ControllerRegistro();
+        const status = await controllerRegistro.registerUser(data.name, data.email, data.password);
+
         setName(data.name);
         setEmail(data.email);
         setPassword(data.password);
-        handleGoBack();
-    }
 
+        {
+            status === 200 ?
+                Alert.alert(
+                    'Sucesso!',
+                    'Conta criada com sucesso!',
+                    [
+                        { text: 'OK', onPress: () => navigation.navigate('Login') },
+                    ],
+                ) :
+                Alert.alert(
+                    'Erro!',
+                    'Não foi possível criar a conta, confira se o e-mail já está cadastrado.',
+                    [
+                        { text: 'OK', onPress: () => { } },
+                    ],
+                );
+        }
+    };
 
     const handleShowPassword = () => {
         setShowPassword(!showPassword);
