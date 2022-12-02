@@ -16,3 +16,12 @@ model User {
   email    String @unique
   password String
 }
+
+model Resort {
+  id          String @id @default(uuid())
+  name        String
+  location    String
+  rating      Float
+  description String
+  image       String
+}

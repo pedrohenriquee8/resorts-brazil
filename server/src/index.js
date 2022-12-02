@@ -2,7 +2,9 @@ import express from "express";
 import cors from "cors";
 import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({
+    log: ["query"],
+});
 
 const app = express();
 app.use(cors());
@@ -19,10 +21,9 @@ app.post("/register", async (req, res) => {
             }
         });
         console.log(user);
-        return res.status(200).json({ sucess: true });
+        return res.status(201).json({ sucess: true });
     } catch (error) {
-        console.log(error);
-        return res.status(409).json({ sucess: false });
+        return res.status(400).json({ error });
     }
 });
 
@@ -35,24 +36,25 @@ app.post("/login", async (req, res) => {
             }
         })
         console.log(user);
+
         if (user) {
-            if (password === user.password) {
-                return res.status(200).json({ sucess: true, user: user });
-            } else {
-                return res.status(409).json({ sucess: false });
-            }
-        } else {
-            return res.status(409).json({ sucess: false });
-        }
+            { password === user.password ? res.status(200).json({ sucess: true, user: user }) : res.status(400).json({ sucess: false }) }
+        };
     } catch (error) {
-        console.log(error);
-        return res.status(409).json({ sucess: false });
+        return res.status(400).json({ sucess: false });
+    }
+});
+
+app.get("/resorts", async (req, res) => {
+    try {
+        const resorts = await prisma.resort.findMany();
+        console.log(resorts);
+        return res.status(200).json({ sucess: true, resorts: resorts });
+    } catch (error) {
+        return res.status(400).json({ sucess: false });
     }
 });
 
 app.listen(3000, () => {
     console.log("Servidor ouvindo na porta 3000");
-})
-
-
-
+});
