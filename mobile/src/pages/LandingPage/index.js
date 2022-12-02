@@ -1,4 +1,5 @@
 import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
@@ -22,7 +23,10 @@ export default function LandingPage() {
                 resizeMode="cover"
                 style={styles.background}
             />
-            <View style={styles.content}>
+            <Animatable.View
+                animation="fadeInUp"
+                style={styles.content}
+            >
                 <Poster style={styles.poster}>
                     <Heading
                         title="Conheça os melhores resorts!"
@@ -40,7 +44,7 @@ export default function LandingPage() {
                         />
                     </TouchableOpacity>
                 </Poster>
-            </View>
+            </Animatable.View>
         </SafeAreaView>
     );
 }

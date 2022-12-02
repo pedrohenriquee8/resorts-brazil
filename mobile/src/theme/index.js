@@ -13,18 +13,27 @@ export const THEME = {
             GRAY: '#707070',
             WHITE: '#FFFFFF',
             RED: '#FF0000',
+            BROWN: '#964B00',
         },
         INPUT: {
             BACKGROUND: '#FFFFFF',
         },
         BORDER: {
             BLACK: '#000000',
-            RED: '#FF0000',
         },
         BUTTON: {
             BLACK: '#000000',
             WHITE: '#FFFFFF',
         },
+        RATING: {
+            YELLOW: '#FFD700',
+        },
+        LOCATION: {
+            BROWN: '#964B00',
+        },
+        CARD: {
+            BACKGROUND: '#FFFFFF',
+        }
     },
 
     FONT_FAMILY: {
@@ -34,7 +43,7 @@ export const THEME = {
     },
 
     FONT_SIZE: {
-        TN: 10,
+        XS: 10,
         SM: 12,
         MD: 16,
         LG: 20,

@@ -7,7 +7,7 @@ const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const loadStorageData = async () => {
@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
 
             if (storagedUser && storagedToken) {
                 setUser(JSON.parse(storagedUser));
-                setIsLoading(false);
+                //setIsLoading(false);
             }
         }
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Alert, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import * as Animatable from "react-native-animatable";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigation } from "@react-navigation/native";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -35,10 +36,10 @@ export default function Registro() {
 
     const onSubmit = async (data) => {
         const controllerRegistro = new ControllerRegistro();
-        const dataRegister = await controllerRegistro.registerUser(data.name, data.email, data.password);
+        const responseRegister = await controllerRegistro.registerUser(data.name, data.email, data.password);
 
         {
-            !!dataRegister && dataRegister.sucess === true ?
+            !!responseRegister && responseRegister.sucess === true ?
                 Alert.alert(
                     'Sucesso!',
                     'Conta criada com sucesso!',
@@ -75,7 +76,10 @@ export default function Registro() {
                 resizeMode="cover"
                 style={{ height: "100%", width: "100%" }}
             />
-            <View style={styles.content}>
+            <Animatable.View
+                animation="fadeInUp"
+                style={styles.content}
+            >
                 <Poster style={styles.poster}>
                     <TouchableOpacity onPress={handleGoBack}>
                         <Ionicons name="arrow-back" size={24} />
@@ -158,7 +162,7 @@ export default function Registro() {
                         <Text style={styles.buttonText}>Cadastrar</Text>
                     </Button>
                 </Poster>
-            </View>
+            </Animatable.View>
         </SafeAreaView>
     );
 }
@@ -189,7 +193,7 @@ const styles = StyleSheet.create({
         bottom: 4,
         color: THEME.COLORS.TEXT.RED,
         fontFamily: THEME.FONT_FAMILY.POPPINS_600SEMIBOLD,
-        fontSize: THEME.FONT_SIZE.TN,
+        fontSize: THEME.FONT_SIZE.XS,
     },
     button: {
         marginTop: 24,

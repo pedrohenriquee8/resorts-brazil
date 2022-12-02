@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Alert, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import * as Animatable from "react-native-animatable";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigation } from "@react-navigation/native";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -36,17 +37,11 @@ export default function Login() {
 
     const onSubmit = async (data) => {
         const controllerLogin = new ControllerLogin();
-        const dataLogin = await controllerLogin.loginUser(data.email, data.password);
+        const responseLogin = await controllerLogin.loginUser(data.email, data.password);
 
         {
-            !!dataLogin && dataLogin.sucess === true ?
-                Alert.alert(
-                    'Sucesso!',
-                    'Conta encontrada!',
-                    [
-                        { text: 'OK', onPress: () => { signIn(dataLogin.user.name, dataLogin.user.email, dataLogin.user.password); } },
-                    ],
-                ) :
+            !!responseLogin && responseLogin.sucess === true ?
+                signIn(responseLogin.user.name, responseLogin.user.email, responseLogin.user.password) :
                 Alert.alert(
                     'Erro!',
                     'Não foi possível encontrar a conta, confira se o e-mail já está cadastrado ou confira se a senha está correta.',
@@ -76,7 +71,10 @@ export default function Login() {
                 style={{ height: "100%", width: "100%" }}
             />
 
-            <View style={styles.content}>
+            <Animatable.View
+                animation="fadeInUp"
+                style={styles.content}
+            >
                 <Poster style={styles.poster}>
                     <Heading
                         title="Bem-vindo de volta!"
@@ -147,7 +145,7 @@ export default function Login() {
                         </Button>
                     </View>
                 </Poster>
-            </View>
+            </Animatable.View>
         </SafeAreaView>
     );
 }
@@ -216,6 +214,6 @@ const styles = StyleSheet.create({
         right: 90,
         color: THEME.COLORS.TEXT.RED,
         fontFamily: THEME.FONT_FAMILY.POPPINS_600SEMIBOLD,
-        fontSize: THEME.FONT_SIZE.TN,
+        fontSize: THEME.FONT_SIZE.XS,
     },
 })
