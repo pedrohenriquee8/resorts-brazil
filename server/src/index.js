@@ -21,7 +21,7 @@ app.post("/register", async (req, res) => {
             }
         });
         console.log(user);
-        return res.status(201).json({ sucess: true });
+        return res.status(200).json({ sucess: true });
     } catch (error) {
         return res.status(400).json({ error });
     }
