@@ -6,6 +6,7 @@ import AppRoutes from "./app.routes";
 import AuthRoutes from "./auth.routes";
 
 import Loading from "../components/Loading";
+import { FavoriteProvider } from "../contexts/favoriteContext";
 
 export default function Routes() {
     const { signed, isLoading } = useAuth();
@@ -18,7 +19,11 @@ export default function Routes() {
 
     return (
         <NavigationContainer>
-            {signed ? <AppRoutes /> : <AuthRoutes />}
+            {signed ?
+                <FavoriteProvider>
+                    <AppRoutes />
+                </FavoriteProvider>
+                : <AuthRoutes />}
         </NavigationContainer>
     );
 }

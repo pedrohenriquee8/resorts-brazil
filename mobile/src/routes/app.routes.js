@@ -3,15 +3,18 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import Home from './../pages/Home';
-import Logout from '../pages/Logout';
-import Details from '../pages/Details';
+import Details from './../pages/Details';
+import Favorites from '../pages/Favorites';
 
+import { useFavorites } from '../contexts/favoriteContext';
 import { THEME } from '../theme';
 
 const Stack = createNativeStackNavigator();
 const TabStack = createBottomTabNavigator();
 
 const TabRoutes = () => {
+    const { favorites } = useFavorites();
+
     return (
         <TabStack.Navigator screenOptions={{
             headerShown: false,
@@ -34,14 +37,21 @@ const TabRoutes = () => {
                     return <Ionicons name="compass-outline" color={color} size={size} />;
                 }
             }} />
-            <TabStack.Screen name="Sair" component={Logout} options={{
+            <TabStack.Screen name="Favoritos" component={Favorites} options={{
+                tabBarBadge: favorites.length,
+                tabBarBadgeStyle: {
+                    backgroundColor: THEME.COLORS.BARBADGE.RED,
+                    color: THEME.COLORS.BARBADGE.WHITE,
+                    fontFamily: THEME.FONT_FAMILY.POPPINS_600SEMIBOLD,
+                    fontSize: THEME.FONT_SIZE.SM,
+                },
                 tabBarIcon: ({ color, size, focused }) => {
                     if (focused) {
                         return (
-                            <Ionicons name="exit" color={color} size={size} />
+                            <Ionicons name="star" color={color} size={size} />
                         );
                     }
-                    return <Ionicons name="exit-outline" color={color} size={size} />;
+                    return <Ionicons name="star" color={color} size={size} />;
                 }
             }} />
         </TabStack.Navigator>

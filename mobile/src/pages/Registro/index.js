@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Alert, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import * as Animatable from "react-native-animatable";
+import { Alert, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigation } from "@react-navigation/native";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import * as yup from "yup";
+import * as Animatable from "react-native-animatable";
 
 import { THEME } from "../../theme";
 import Background from "../../components/Background";

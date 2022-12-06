@@ -5,7 +5,7 @@ import Background from "../Background";
 
 import { THEME } from "../../theme";
 
-export default function Card({ image, title, description, location }) {
+export default function InfoDetails({ image, title, rating, description, location }) {
     return (
         <View style={{ flex: 1 }}>
             <Background
@@ -17,6 +17,15 @@ export default function Card({ image, title, description, location }) {
 
             <View style={{ padding: 5 }}>
                 <Text style={styles.title}>{title}</Text>
+
+                <View style={styles.rating}>
+                    <Ionicons
+                        name="star"
+                        size={12}
+                        color={THEME.COLORS.RATING.YELLOW}
+                    />
+                    <Text style={styles.ratingText}>{rating}/5</Text>
+                </View>
 
                 <Text style={styles.description}>{description}</Text>
 
@@ -41,6 +50,14 @@ const styles = StyleSheet.create({
     title: {
         fontFamily: THEME.FONT_FAMILY.POPPINS_600SEMIBOLD,
         fontSize: THEME.FONT_SIZE.MD,
+    },
+    rating: {
+        flexDirection: "row",
+    },
+    ratingText: {
+        marginLeft: 3,
+        fontFamily: THEME.FONT_FAMILY.POPPINS_600SEMIBOLD,
+        fontSize: THEME.FONT_SIZE.XS,
     },
     description: {
         marginTop: 4,

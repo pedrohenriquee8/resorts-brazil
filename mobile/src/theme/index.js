@@ -33,6 +33,10 @@ export const THEME = {
         },
         CARD: {
             BACKGROUND: '#FFFFFF',
+        },
+        BARBADGE: {
+            RED: '#FF0000',
+            WHITE: '#FFFFFF',
         }
     },
 

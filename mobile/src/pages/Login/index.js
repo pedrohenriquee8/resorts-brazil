@@ -1,21 +1,22 @@
 import { useState } from "react";
-import { Alert, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import * as Animatable from "react-native-animatable";
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigation } from "@react-navigation/native";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import ControllerLogin from "./controllerLogin";
+import * as Animatable from "react-native-animatable";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-import { THEME } from "../../theme";
 import Background from "../../components/Background";
 import Poster from "../../components/Poster";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Heading from "../../components/Heading";
 
+import { THEME } from "../../theme";
 import { useAuth } from "../../contexts/authContext";
-import ControllerLogin from "./controllerLogin";
 
 export default function Login() {
     const image = require('../../assets/background-login.png');
