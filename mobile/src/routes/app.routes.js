@@ -5,6 +5,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import Home from './../pages/Home';
 import Details from './../pages/Details';
 import Favorites from '../pages/Favorites';
+import Search from '../pages/Search';
 
 import { useFavorites } from '../contexts/favoriteContext';
 import { THEME } from '../theme';
@@ -35,6 +36,22 @@ const TabRoutes = () => {
                         );
                     }
                     return <Ionicons name="compass-outline" color={color} size={size} />;
+                }
+            }} />
+            <TabStack.Screen name="Procurar" component={Search} options={{
+                tabBarBadgeStyle: {
+                    backgroundColor: THEME.COLORS.BARBADGE.RED,
+                    color: THEME.COLORS.BARBADGE.WHITE,
+                    fontFamily: THEME.FONT_FAMILY.POPPINS_600SEMIBOLD,
+                    fontSize: THEME.FONT_SIZE.SM,
+                },
+                tabBarIcon: ({ color, size, focused }) => {
+                    if (focused) {
+                        return (
+                            <Ionicons name="search-outline" color={color} size={size} />
+                        );
+                    }
+                    return <Ionicons name="search-outline" color={color} size={size} />;
                 }
             }} />
             <TabStack.Screen name="Favoritos" component={Favorites} options={{

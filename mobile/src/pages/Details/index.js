@@ -10,6 +10,7 @@ import { THEME } from "../../theme";
 
 export default function Details({ route }) {
     const data = route.params.infoResort;
+    console.log(data);
 
     const image = require("../../assets/background-home.png");
     const userLogo = require("../../assets/user-logo.png");
@@ -49,10 +50,13 @@ export default function Details({ route }) {
                         rating={data.rating}
                         description={data.description}
                         location={data.location}
+                        coords={{
+                            latitude: data.latitude,
+                            longitude: data.longitude,
+                        }}
                     />
                 </ScrollView>
             </View>
-
         </SafeAreaView>
     );
 }

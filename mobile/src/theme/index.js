@@ -1,7 +1,7 @@
 export const THEME = {
     COLORS: {
         ACTIVY_INDICATOR: {
-            BROWN: '#964B00',
+            BLUE: '#117DFF',
             WHITE: '#FFFFFF',
         },
         LINEAR_GRADIENT: {

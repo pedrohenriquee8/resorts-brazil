@@ -16,13 +16,13 @@ export default function Favorites() {
     const { user } = useAuth();
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={styles.container}>
             <Background
                 source={image}
                 style={{ height: "100%", width: "100%" }}
             />
 
-            <View style={styles.container}>
+            <View style={styles.content}>
                 <View style={styles.header}>
                     <View>
                         <Text style={styles.title}>Seus favoritos,</Text>
@@ -65,9 +65,12 @@ export default function Favorites() {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
+    },
+    content: {
         position: "absolute",
         marginHorizontal: 20,
-        marginVertical: 50,
+        marginVertical: 80,
         width: "90%",
         height: "100%",
     },

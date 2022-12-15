@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { ScrollView, StyleSheet, Text, View, SafeAreaView } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import * as Animatable from "react-native-animatable";
 
 import Background from "../../components/Background";
 import Loading from "../../components/Loading";
-import Input from "../../components/Input";
 import Resort from "../../components/Resort";
 import Button from "../../components/Button";
 
@@ -30,9 +27,8 @@ export default function Home() {
 
     const getResorts = async () => {
         try {
-            const resortController = new ResortController();
-            const response = await resortController.getResort();
-            setData(response);
+            const resortController = await new ResortController().getResort();
+            setData(resortController);
         } catch (error) {
             throw error;
         } finally {
@@ -57,10 +53,7 @@ export default function Home() {
                 style={{ height: "100%", width: "100%" }}
             />
 
-            <Animatable.View
-                animation="fadeInUp"
-                style={styles.content}
-            >
+            <View style={styles.content}>
                 <View style={styles.topPage}>
                     <Button onPress={handleExit}>
                         <Ionicons
@@ -80,13 +73,6 @@ export default function Home() {
                     <Text style={styles.subtitle}>{user.name}</Text>
                 </View>
 
-                <View style={styles.input}>
-                    <Input
-                        iconLeft="search-outline"
-                        placeholder="Pesquise por um destino"
-                    />
-                </View>
-
                 <View style={styles.scrollView}>
                     {data.length !== 0 ?
                         <ScrollView
@@ -103,7 +89,7 @@ export default function Home() {
                         </ScrollView>
                         : <Loading />}
                 </View>
-            </Animatable.View>
+            </View>
         </SafeAreaView>
     );
 }
@@ -122,8 +108,8 @@ const styles = StyleSheet.create({
         top: 45,
     },
     header: {
-        top: "9%",
-        left: "5%",
+        top: 60,
+        left: 20,
     },
     title: {
         fontFamily: THEME.FONT_FAMILY.POPPINS_600SEMIBOLD,
@@ -132,10 +118,6 @@ const styles = StyleSheet.create({
     subtitle: {
         fontFamily: THEME.FONT_FAMILY.POPPINS_700BOLD,
         fontSize: THEME.FONT_SIZE.XL,
-    },
-    input: {
-        top: "10%",
-        paddingHorizontal: "5%",
     },
     scrollView: {
         top: "12%",

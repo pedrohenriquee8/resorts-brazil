@@ -6,7 +6,6 @@ import { useNavigation } from "@react-navigation/native";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import * as yup from "yup";
-import * as Animatable from "react-native-animatable";
 
 import { THEME } from "../../theme";
 import Background from "../../components/Background";
@@ -77,10 +76,7 @@ export default function Registro() {
                 resizeMode="cover"
                 style={{ height: "100%", width: "100%" }}
             />
-            <Animatable.View
-                animation="fadeInUp"
-                style={styles.content}
-            >
+            <View style={styles.content}>
                 <Poster style={styles.poster}>
                     <TouchableOpacity onPress={handleGoBack}>
                         <Ionicons name="arrow-back" size={24} />
@@ -163,7 +159,7 @@ export default function Registro() {
                         <Text style={styles.buttonText}>Cadastrar</Text>
                     </Button>
                 </Poster>
-            </Animatable.View>
+            </View>
         </SafeAreaView>
     );
 }

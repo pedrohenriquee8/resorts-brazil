@@ -4,7 +4,7 @@ export default class ControllerLogin {
     loginUser = async (email, password) => {
         const loginService = new LoginService();
         const response = await loginService.loginUser(email, password);
-        if (!!response) {
+        if (response) {
             return response;
         }
     }

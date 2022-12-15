@@ -5,7 +5,6 @@ import { useForm, Controller } from "react-hook-form";
 import { useNavigation } from "@react-navigation/native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import ControllerLogin from "./controllerLogin";
-import * as Animatable from "react-native-animatable";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -72,10 +71,7 @@ export default function Login() {
                 style={{ height: "100%", width: "100%" }}
             />
 
-            <Animatable.View
-                animation="fadeInUp"
-                style={styles.content}
-            >
+            <View style={styles.content}>
                 <Poster style={styles.poster}>
                     <Heading
                         title="Bem-vindo de volta!"
@@ -146,7 +142,7 @@ export default function Login() {
                         </Button>
                     </View>
                 </Poster>
-            </Animatable.View>
+            </View>
         </SafeAreaView>
     );
 }

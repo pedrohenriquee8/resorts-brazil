@@ -1,13 +1,17 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import MapView from "react-native-maps";
 
 import Background from "../Background";
+import Loading from "../Loading";
 
 import { THEME } from "../../theme";
 
-export default function InfoDetails({ image, title, rating, description, location }) {
+export default function InfoDetails({ image, title, rating, description, location, coords }) {
+    const { latitude, longitude } = coords;
+
     return (
-        <View style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1 }}>
             <Background
                 source={image}
                 borderTopLeftRadius={10}
@@ -37,8 +41,26 @@ export default function InfoDetails({ image, title, rating, description, locatio
                     />
                     <Text style={styles.locationText}>{location}</Text>
                 </View>
+
+                <View style={styles.map}>
+                    {latitude && longitude ? <MapView
+                        style={{ flex: 1 }}
+                        minZoomLevel={12}
+                        maxZoomLevel={20}
+                        camera={{
+                            center: {
+                                latitude: latitude,
+                                longitude: longitude,
+                            },
+                            pitch: 0,
+                            heading: 0,
+                            zoom: 12,
+                        }}
+                        mapType="standard"
+                    /> : <Loading />}
+                </View>
             </View>
-        </View>
+        </SafeAreaView>
     );
 }
 
@@ -76,4 +98,13 @@ const styles = StyleSheet.create({
         fontSize: THEME.FONT_SIZE.XS,
         color: THEME.COLORS.TEXT.BROWN,
     },
+    map: {
+        height: 270,
+        width: "100%",
+        marginTop: 20,
+        marginBottom: 20,
+        borderColor: THEME.COLORS.BORDER.BLACK,
+        borderWidth: 1,
+        borderRadius: 2,
+    }
 })

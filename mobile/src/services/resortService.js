@@ -4,7 +4,7 @@ export default class ResortService {
     getResorts = async () => {
         try {
             const data = await fetch(`${URL}/resorts`);
-            const response = data.json();
+            const response = await data.json();
             return response;
         } catch (error) {
             throw error;
