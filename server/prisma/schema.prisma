@@ -19,9 +19,11 @@ model User {
 
 model Resort {
   id          String @id @default(uuid())
-  name        String
+  name        String @unique
   location    String
   rating      Float
   description String
   image       String
+  latitude    Float?
+  longitude   Float?
 }
