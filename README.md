@@ -88,7 +88,7 @@ Um ponto a ser destacado é que, em services da pasta mobile, deve ser criado um
 
 ## Resultados
 
-Para ter acesso aos resultados, basta acessar o seguinte link: [Resorts Brazil.]()
+Para ter acesso aos resultados, basta acessar o seguinte link: [Resorts Brazil.](https://github.com/pedrohenriquee8/resorts-brazil/blob/main/mobile/README.md)
 
 ## Considerações Finais
 
