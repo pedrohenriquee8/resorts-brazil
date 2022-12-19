@@ -10,7 +10,6 @@ import { THEME } from "../../theme";
 
 export default function Details({ route }) {
     const data = route.params.infoResort;
-    console.log(data);
 
     const image = require("../../assets/background-home.png");
     const userLogo = require("../../assets/user-logo.png");
@@ -43,7 +42,10 @@ export default function Details({ route }) {
                     />
                 </View>
 
-                <ScrollView style={styles.content}>
+                <ScrollView
+                    style={styles.content}
+                    showsVerticalScrollIndicator={false}
+                >
                     <InfoDetails
                         image={{ uri: data.image }}
                         title={data.name}

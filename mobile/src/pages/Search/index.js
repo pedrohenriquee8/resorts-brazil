@@ -5,7 +5,7 @@ import Input from "../../components/Input";
 import ResortController from "../../pages/Home/resortController";
 import Loading from "../../components/Loading";
 import Background from "../../components/Background";
-import InfoDetails from "../../components/InfoDetails";
+import InfoFavorites from "../../components/InfoFavorites";
 
 import { useAuth } from "../../contexts/authContext";
 import { THEME } from "../../theme";
@@ -91,7 +91,7 @@ export default function Search() {
                         showsVerticalScrollIndicator={false}
                         renderItem={({ item }) => (
                             <View style={styles.cards}>
-                                <InfoDetails
+                                <InfoFavorites
                                     title={item.name}
                                     rating={item.rating}
                                     description={item.description}

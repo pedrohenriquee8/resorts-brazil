@@ -20,6 +20,7 @@ import { useAuth } from "../../contexts/authContext";
 export default function Login() {
     const image = require('../../assets/background-login.png');
     const navigation = useNavigation();
+
     const { signIn } = useAuth();
 
     const [email, setEmail] = useState('');
@@ -38,9 +39,8 @@ export default function Login() {
     const onSubmit = async (data) => {
         const controllerLogin = new ControllerLogin();
         const responseLogin = await controllerLogin.loginUser(data.email, data.password);
-
         {
-            !!responseLogin && responseLogin.sucess === true ?
+            responseLogin.sucess === true ?
                 signIn(responseLogin.user.name, responseLogin.user.email, responseLogin.user.password) :
                 Alert.alert(
                     'Erro!',

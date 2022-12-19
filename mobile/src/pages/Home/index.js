@@ -120,8 +120,8 @@ const styles = StyleSheet.create({
         fontSize: THEME.FONT_SIZE.XL,
     },
     scrollView: {
-        top: "12%",
-        marginLeft: "5%",
+        top: 100,
+        marginLeft: 12,
     },
     cards: {
         marginRight: 8,

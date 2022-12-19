@@ -1,15 +1,11 @@
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import MapView from "react-native-maps";
 
 import Background from "../Background";
-import Loading from "../Loading";
 
 import { THEME } from "../../theme";
 
-export default function InfoDetails({ image, title, rating, description, location, coords }) {
-    const { latitude, longitude } = coords;
-
+export default function InfoFavorites({ image, title, rating, description, location }) {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <Background
@@ -19,7 +15,7 @@ export default function InfoDetails({ image, title, rating, description, locatio
                 style={styles.image}
             />
 
-            <View style={{ alignItems: "center" }}>
+            <View style={{ padding: 4 }}>
                 <Text style={styles.title}>{title}</Text>
 
                 <View style={styles.rating}>
@@ -40,24 +36,6 @@ export default function InfoDetails({ image, title, rating, description, locatio
                         color={THEME.COLORS.LOCATION.BROWN}
                     />
                     <Text style={styles.locationText}>{location}</Text>
-                </View>
-
-                <View style={styles.map}>
-                    {latitude && longitude ? <MapView
-                        style={{ flex: 1 }}
-                        minZoomLevel={12}
-                        maxZoomLevel={20}
-                        camera={{
-                            center: {
-                                latitude: latitude,
-                                longitude: longitude,
-                            },
-                            pitch: 0,
-                            heading: 0,
-                            zoom: 12,
-                        }}
-                        mapType="standard"
-                    /> : <Loading />}
                 </View>
             </View>
         </SafeAreaView>
@@ -100,10 +78,4 @@ const styles = StyleSheet.create({
         fontSize: THEME.FONT_SIZE.XS,
         color: THEME.COLORS.TEXT.BROWN,
     },
-    map: {
-        height: 270,
-        width: "100%",
-        marginTop: 20,
-        marginBottom: 20,
-    }
 })

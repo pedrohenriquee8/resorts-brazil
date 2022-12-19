@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Alert, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigation } from "@react-navigation/native";
@@ -39,7 +39,7 @@ export default function Registro() {
         const responseRegister = await controllerRegistro.registerUser(data.name, data.email, data.password);
 
         {
-            !!responseRegister && responseRegister.sucess === true ?
+            responseRegister.sucess === true ?
                 Alert.alert(
                     'Sucesso!',
                     'Conta criada com sucesso!',

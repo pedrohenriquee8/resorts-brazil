@@ -65,8 +65,8 @@ export default function Resort({ data, ...rest }) {
 
 const styles = StyleSheet.create({
     container: {
-        height: 360,
-        width: 335,
+        height: 450,
+        width: 350,
         backgroundColor: "white",
         borderRadius: 10,
     },
