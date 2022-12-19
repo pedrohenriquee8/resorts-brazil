@@ -1,39 +1,32 @@
-# Resorts Brazil
+<h1 align="center">Resorts Brazil</h1>
 
 ## Sumário
 
-- [Descrição](#descrição)
+- [Introdução](#introdução)
 - [Tecnologias](#tecnologias)
-- [Protótipo](#protótipo)
 - [Instalação](#instalação)
+- [Observação](#observação)
+- [Resultados](#resultados)
 - [Considerações Finais](#considerações-finais)
 
-## Descrição
+## Introdução
 
-O projeto **ResortsBrazil** é um aplicativo fictício que tem como objetivo apresentar os resorts mais famosos do Brasil, tomando como referência a [matéria](https://viagemeturismo.abril.com.br/materias/os-30-melhores-resorts-do-brasil/) publicada por Fernando Leite no site jornalístico brasileiro Viagem. Diante disso, a aplicação foi desenvolvida com o intuito de praticar o desenvolvimento de aplicativos com React Native e para a conclusão do Curso de Desenvolvimento de Aplicativos (ofertado pelo Instituto Federal de Alagoas - Campus Arapiraca).
+O aplicativo **ResortsBrazil** surge mediante à ingressão no Curso de Desenvolvimento de Aplicativos, ofertado pelo Instituto Federal de Alagoas - Campus Arapiraca, cujo objetivo é o desenvolvimento de uma aplicação utilizando React Native. Diante disso, visando a conclusão do curso com êxito, o projeto em questão foi construído com base no ranking dos [30 melhores resorts do Brasil](https://viagemeturismo.abril.com.br/materias/os-30-melhores-resorts-do-brasil/), publicado por Fernando Leite no site Viagem e Turismo. Assim sendo, o aplicativo busca apresentar dez desses resorts e algumas das suas informações relevantes.
 
 ## Tecnologias
 
 Em suma, o projeto foi desenvolvido com as seguintes tecnologias:
 
-- [React Native & Expo](https://reactnative.dev/docs/environment-setup)
+- [Expo CLI](https://expo.dev)
 - [Node.js](https://nodejs.org/en/)
 - [Express](https://expressjs.com)
 - [Prisma](https://www.prisma.io)
 
-## Protótipo
-
-Em linhas gerais, segue o link do protótipo do aplicativo:
-
-- [Link](https://www.figma.com/file/Wt9DTZXngGCZjdxyh4hqsu/Resort-Brazil?node-id=0%3A1)
-
-Com isso, é importante ressaltar que tais templates foram desenvolvidos com o intuito de praticar o desenvolvimento de protótipos de aplicativos com o Figma, sendo esse o primeiro design feito por mim na plataforma.
-
 ## Instalação
 
-Para a instalação, faz-se necessário que o usuário tenha em sua máquina o Node.js e o Expo instalados.
+Para a instalação, faz-se necessário que o usuário tenha em sua máquina o Node.js instalado.
 
-Com isso, segue os principais passos para iniciar a aplicação:
+Com isso, segue os principais passos para executar a aplicação:
 
 **1. Clone o repositório:**
 
@@ -47,32 +40,58 @@ $ git clone https://github.com/pedrohenriquee8/resorts-brazil
 $ cd resorts-brazil
 ```
 
-**3. Instale as dependências:**
+**3.1.1. Acesse a pasta mobile:**
+
+```bash
+$ cd mobile
+```
+
+**3.1.2. Instale as dependências:**
 
 ```bash
 $ npm install
 ```
 
-**4. Inicie a aplicação:**
+**3.2.1. Acesse a pasta server:**
 
-4.1. Inicie o aplicativo:
+```bash
+$ cd mobile
+```
+
+**3.2.2. Instale as dependências:**
+
+```bash
+$ npm install
+```
+
+**4. Na pasta mobile, inicie a aplicação:**
 
 ```bash
 $ expo start
 ```
 
-4.2. Inicie o servidor:
+**5. Na pasta server, inicie a aplicação:**
 
 ```bash
 $ nodemon index.js
 ```
 
-Caso o usuário queira utilizar o banco de dados, é necessário seguir o seguinte passo:
+Caso o usuário queira utilizar o banco de dados, basta inserir na pasta server:
 
 ```bash
 $ npx prisma studio
 ```
 
+## Observação
+
+Um ponto a ser destacado é que, em services da pasta mobile, deve ser criado um arquivo chamado _config.js_, em que deve ser semelhante ao que foi proposto em _configService.js_.
+
+## Resultados
+
+Para ter acesso aos resultados, basta acessar o seguinte link: [Resorts Brazil.]()
+
 ## Considerações Finais
 
-Desse modo, haja vista as tecnologias mencionadas, é de suma importância ressaltar que trata-se do primeiro grande projeto desenvolvido por mim, logo, é possível que haja alguns erros de lógica e/ou de programação. Caso encontre algum erro, por favor, sinta-se à vontade para abrir uma issue ou para enviar um pull request.
+Desse modo, o projeto em questão, mediante as tecnologias mencionadas, é a primeira grande aplicação desenvolvida por mim, logo, é possível que haja alguns erros de lógica e/ou programação. Entretanto, foi de suma importância para o meu aprendizado, pois proporcionou uma visão mais sólida e mais ampla acerca do desenvolvimento de aplicativos.
+
+[⬆ Voltar ao topo](#sumário)
