@@ -20,10 +20,10 @@ app.post("/register", async (req, res) => {
                 password,
             }
         });
-        console.log(user);
         return res.status(200).json({ sucess: true });
     } catch (error) {
         console.log(error);
+        return res.status(400).json({ sucess: false });
     }
 });
 
@@ -35,10 +35,9 @@ app.post("/login", async (req, res) => {
                 email,
             }
         })
-        console.log(user);
 
         if (user) {
-            password === user.password ? res.status(200).json({ user: user }) : res.status(400).json({ sucess: false });
+            password === user.password ? res.status(200).json({ user: user, sucess: true }) : res.status(400).json({ sucess: false });
         };
     } catch (error) {
         console.log(error);
@@ -48,7 +47,6 @@ app.post("/login", async (req, res) => {
 app.get("/resorts", async (req, res) => {
     try {
         const resorts = await prisma.resort.findMany();
-        console.log(resorts);
         return res.status(200).json({ resorts });
     } catch (error) {
         return res.status(400).json({ sucess: false });
